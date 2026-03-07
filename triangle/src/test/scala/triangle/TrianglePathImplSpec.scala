@@ -7,5 +7,5 @@ class TrianglePathImplSpec extends AnyFunSuite:
   val trianglePathFinder = new TrianglePathFinder
 
   test("findPath returns the expected path") {
-    assert(trianglePathFinder.findPath(Seq.empty) == Seq())
+    assert(trianglePathFinder.findPath(List.empty) == Right(List.empty))
   }

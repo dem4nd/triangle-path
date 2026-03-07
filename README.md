@@ -1,6 +1,6 @@
 # triangle-path
 
-A minimal multi-module Gradle project for a triangle path task.
+A Gradle project for a triangle path task.
 
 ## Stack
 
@@ -9,7 +9,7 @@ A minimal multi-module Gradle project for a triangle path task.
 - Gradle 9
 - module: `triangle`
 
-## Local setup
+## Setup
 
 Using mise:
 
@@ -43,18 +43,10 @@ Build the fat jar:
 Run it:
 
 ```bash
-java -jar triangle/build/libs/triangle-all.jar
+echo input.txt | java -jar triangle/build/libs/triangle-all.jar
 ```
 
-You can also run the main class directly with classpath:
-
-```bash
-java -cp triangle/build/libs/triangle-all.jar triangle.MinTrianglePath
-```
-
-`java MinTrianglePath` is not the standard way to run a Gradle/Scala project, because Java needs either a classpath or a jar with a manifest.
-
-## Production Docker image
+## Run in docker image
 
 Build:
 
@@ -65,5 +57,5 @@ docker build -t triangle-path .
 Run:
 
 ```bash
-docker run --rm triangle-path
+docker run --rm -i triangle-path < input.txt
 ```
