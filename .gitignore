@@ -1,0 +1,14 @@
+requirements/
+
+.gradle/
+build/
+**/build/
+
+.idea/
+*.iml
+out/
+
+.metals/
+.bloop/
+
+.DS_Store
