@@ -2,18 +2,3 @@
 java = "corretto-21"
 gradle = "9.3.0"
 scala = "3"
-
-[tasks.wrapper]
-run = "gradle wrapper"
-
-[tasks.build]
-run = "./gradlew build"
-
-[tasks.test]
-run = "./gradlew test"
-
-[tasks.run]
-run = "./gradlew :triangle:run"
-
-[tasks.fatjar]
-run = "./gradlew :triangle:shadowJar"

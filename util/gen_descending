@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+rows="${1:-10}"
+
+for ((i = 1; i <= rows; i++)); do
+  for ((j = i; j >= 1; j--)); do
+    if [[ "$j" -eq 1 ]]; then
+      printf "%d" "$j"
+    else
+      printf "%d " "$j"
+    fi
+  done
+  printf "\n"
+done
