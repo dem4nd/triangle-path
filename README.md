@@ -193,5 +193,4 @@ The implementation focuses on:
 
 - immutable data structures
 - clear separation of parsing, validation, and solving stages
-- deterministic path reconstruction
 - comprehensive unit testing

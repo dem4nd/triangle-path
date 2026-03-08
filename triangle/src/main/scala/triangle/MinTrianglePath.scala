@@ -1,7 +1,7 @@
 package triangle
 
 import scala.io.Source
-import scala.util.chaining._
+import scala.util.chaining.*
 
 
 object MinTrianglePath:
