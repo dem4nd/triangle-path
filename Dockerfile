@@ -1,15 +1,18 @@
 FROM gradle:9.3.0-jdk21 AS build
 WORKDIR /workspace
 
-COPY gradle gradle
-COPY gradlew gradlew
-COPY gradlew.bat gradlew.bat
 COPY settings.gradle.kts build.gradle.kts gradle.properties ./
+
+# Pre-download dependencies (cached Docker layer)
+RUN --mount=type=cache,target=/home/gradle/.gradle \
+    gradle :triangle:dependencies --no-daemon || true
+
 COPY triangle triangle
 
-RUN chmod +x gradlew && ./gradlew :triangle:shadowJar --no-daemon
+RUN --mount=type=cache,target=/home/gradle/.gradle \
+    gradle :triangle:shadowJar --no-daemon
 
-FROM eclipse-temurin:21-jre
+FROM gcr.io/distroless/java21-debian12
 WORKDIR /app
 
 COPY --from=build /workspace/triangle/build/libs/triangle-all.jar ./triangle-path.jar
