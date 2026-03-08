@@ -9,7 +9,7 @@ class TrianglePathImplSpec extends AnyFunSuite:
   val trianglePathFinder = new TrianglePathFinder
 
   test("findPath returns empty path for empty triangle") {
-    assert(trianglePathFinder.findPath(List.empty) == Right(List.empty))
+    assert(trianglePathFinder.findPath(List.empty) == Left(EmptyTriangle))
   }
 
   test("findPath returns non-empty path for triangle") {
@@ -20,9 +20,9 @@ class TrianglePathImplSpec extends AnyFunSuite:
       List(11, 2, 10, 9)
     )
 
-    val path =
+    val result =
       trianglePathFinder.foldLayers(triangle)
         .pipe(trianglePathFinder.collectPath)
 
-    assert(path == List(7, 6, 3, 2))
+    assert(result == 18 -> List(7, 6, 3, 2))
   }
