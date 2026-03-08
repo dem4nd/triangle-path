@@ -11,7 +11,8 @@ type Triangle = List[List[Int]]
 sealed trait TriangleError:
   def message: String
 
-case class ParseError(message: String) extends TriangleError
+case class ParseError(rowIndex: Int) extends TriangleError:
+  override def message: String = s"Invalid value in row ${rowIndex + 1}"
 
 case object EmptyTriangle extends TriangleError:
   override def message: String = "Triangle is empty"
@@ -48,8 +49,8 @@ class TrianglePathFinder:
               .map(_.toIntOption)
               .toList
 
-          if parsed.contains(None) then
-            Left(ParseError(s"Invalid value in row ${rowIndex + 1}: '$row'"))
+          if parsed.exists(_.isEmpty) then
+            Left(ParseError(rowIndex))
           else
             Right(parsed.flatten :: acc)
       }
