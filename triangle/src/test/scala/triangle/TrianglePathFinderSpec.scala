@@ -7,7 +7,7 @@ import triangle.TrianglePathFinder.PathNode
 import scala.util.chaining.*
 
 
-class TrianglePathImplSpec extends AnyFunSuite:
+class TrianglePathFinderSpec extends AnyFunSuite:
 
   val trianglePathFinder = new TrianglePathFinder
 
